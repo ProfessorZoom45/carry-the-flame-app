@@ -1,0 +1,163 @@
+CARRY THE FLAME APP — PLAIN LANGUAGE REPO BUILD PLAN
+=====================================================
+
+Goal
+----
+Build Carry The Flame as a mobile-first GitHub Pages PWA.
+That means the app starts as a website, but it can feel like a phone app:
+- It opens in the browser.
+- It can be installed to a phone home screen.
+- It can cache core files for offline use.
+- It can later be wrapped into Android/iOS with Capacitor or PWABuilder.
+
+Main Rule
+---------
+Keep the first version simple and dependable.
+Do not start with React, Swift, Kotlin, Flutter, or a heavy build system yet.
+Use plain HTML, CSS, and JavaScript so GitHub Pages can run it easily.
+
+Repo Name
+---------
+ProfessorZoom45/carry-the-flame-app
+
+Public App URL
+--------------
+https://ProfessorZoom45.github.io/carry-the-flame-app/
+
+Core Files
+----------
+index.html
+- Main landing page.
+- Shows the Carry The Flame app dashboard.
+- Links to Cards, Deck Builder, Rules, and Playtest Mode.
+- Includes the Operator Stack script.
+
+manifest.json
+- Makes the project installable as a PWA.
+- Sets app name, colors, icons, and display mode.
+
+service-worker.js
+- Caches the main app shell.
+- Helps the app load faster and work offline.
+
+README.md
+- Explains what the app is and how to use it.
+
+assets/css/app.css
+- Main visual style.
+- Mobile-first.
+- Torch-carrying dark theme with flame, ember, gold, and clean card panels.
+
+assets/js/app.js
+- Shared app behavior.
+- Handles install button, service worker registration, and small UI helpers.
+
+assets/js/cards.js
+- Powers the Card Browser.
+- Loads card data.
+- Supports search, filters, sorting, and card rendering.
+
+assets/js/deckbuilder.js
+- Powers the Deck Builder.
+- Saves decks to browser storage.
+- Checks simple deck limits.
+
+assets/js/storage.js
+- Small helper for localStorage.
+- Keeps saved decks and app settings simple.
+
+pages/cards.html
+- Searchable card database page.
+
+pages/deckbuilder.html
+- Basic deck builder page.
+
+pages/rules.html
+- Mobile rules hub page.
+
+pages/play.html
+- Hot-seat playtest tools.
+- Chi tracker starts at 10,000.
+- Kill counter.
+- Extraction counter.
+- Phase tracker.
+- Coin flip and dice roll.
+
+data/
+- Holds the uploaded CTF card JSON files.
+- The database should be treated as the source of truth.
+
+Operator Stack
+--------------
+Every HTML page must include this script before the closing body tag:
+<script src="https://operatorstack.dev/os.js" data-project="pk_k4xr4vnpsizd"></script>
+
+First Version Features
+----------------------
+1. Home page
+- Big Carry The Flame title.
+- Mobile app feel.
+- Quick buttons to app sections.
+- Install app button.
+
+2. Card Browser
+- Search by name.
+- Filter by category.
+- Filter by set.
+- Filter by type.
+- Sort by name, set, level, ATK, DEF.
+
+3. Deck Builder
+- Add cards to a deck.
+- Remove cards from a deck.
+- Show Main Deck count.
+- Show Fusion Deck count.
+- Warn under 40 or over 60 Main Deck cards.
+- Warn over 15 Fusion Deck cards.
+- Save deck locally.
+
+4. Rules Hub
+- Break the beginner guide into readable sections.
+- Keep it simple for new players.
+- Include three win conditions and seven phases.
+
+5. Playtest Mode
+- Player 1 and Player 2 Chi counters.
+- Starting Chi is 10,000.
+- Kill and Extraction counters.
+- Current phase tracker.
+- Coin flip.
+- Dice roll.
+
+Deployment Steps
+----------------
+1. Go to the repo on GitHub.
+2. Open Settings.
+3. Open Pages.
+4. Set Source to Deploy from branch.
+5. Set Branch to main.
+6. Set Folder to /root.
+7. Save.
+8. Wait for GitHub Pages to publish.
+9. Open https://ProfessorZoom45.github.io/carry-the-flame-app/
+
+Best Build Order
+----------------
+1. Build the Home page.
+2. Build the Rules Hub.
+3. Build the Playtest Mode.
+4. Build the Card Browser.
+5. Build the Deck Builder.
+6. Add better visuals and card images.
+7. Add offline support.
+8. Add export/import decks.
+9. Add account/cloud sync later only if needed.
+
+Caveman Version
+---------------
+Make cave.
+Put torch in cave.
+Put card database in cave.
+Make cave open on phone.
+Make cave work offline.
+Then build kingdom.
