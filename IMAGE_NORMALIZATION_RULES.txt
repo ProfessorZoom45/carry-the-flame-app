@@ -1,0 +1,72 @@
+CARRY THE FLAME — IMAGE NORMALIZATION RULES
+===========================================
+
+Purpose
+-------
+Before uploading thousands of card images, every image needs a predictable name and folder path.
+The PWA will use the card database name to locate the correct image.
+
+Canonical standard
+------------------
+Use UNDERSCORES as the official saved filename format.
+
+Final PWA image path format:
+images/<SET>/<normalized_card_name>.<ext>
+
+Example:
+images/ANM/reese_the_great_s_gundam.gif
+
+Normalization steps
+-------------------
+1. Start with the exact card name from the JSON database.
+2. Convert to lowercase.
+3. Convert curly apostrophes and straight apostrophes into separators.
+4. Convert spaces, hyphens, slashes, punctuation, and non-alphanumeric symbols into separators.
+5. Collapse repeated separators into one underscore.
+6. Trim underscores from the beginning and end.
+7. Keep file extension lowercase.
+
+Canonical examples
+------------------
+Reese The Great's Gundam
+→ reese_the_great_s_gundam.gif
+
+Himura - Hitokiri Battousai
+→ himura_hitokiri_battousai.gif
+
+Beshimi’s Poison Dart
+→ beshimi_s_poison_dart.gif
+
+Alternate lookup keys
+---------------------
+The matcher may also test dash variants when trying to locate existing source files.
+Dash variants are NOT the final saved filename standard.
+They are only alternate lookup keys.
+
+Correct dash lookup examples:
+Reese The Great's Gundam
+→ reese-the-great-s-gundam.gif
+
+Himura - Hitokiri Battousai
+→ himura-hitokiri-battousai.gif
+
+Important correction
+--------------------
+Do NOT mix dash and underscore in the same dash variant.
+Wrong:
+himura-hitokiri_battousai.gif
+
+Right:
+himura-hitokiri-battousai.gif
+
+Final rule
+----------
+Final saved files use underscores.
+Dash versions are search-only aliases.
+
+Caveman version
+---------------
+One card name.
+One clean image name.
+Underscore is home.
+Dash is only a trail marker.
