@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="description" content="Carry The Flame mobile-first PWA card game companion by Perfect Timing Gaming." />
+  <title>Carry The Flame App</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="app-header" aria-label="App header">
+    <a class="brand" href="index.html" aria-label="Carry The Flame home">
+      <span class="brand-torch" aria-hidden="true">🔥</span>
+      <span>
+        <strong>Carry The Flame</strong>
+        <small>Perfect Timing Gaming</small>
+      </span>
+    </a>
+
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-controls="siteNav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="pages/cards.html">Cards</a>
+      <a href="pages/deckbuilder.html">Deck Builder</a>
+      <a href="pages/rules.html">Rules</a>
+      <a href="pages/play.html">Playtest</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section-pad">
+      <div class="ember-field" aria-hidden="true"></div>
+      <p class="eyebrow">Mobile-first PWA companion</p>
+      <h1><span class="torch-side" aria-hidden="true">🔥</span> Carry The Flame <span class="torch-side" aria-hidden="true">🔥</span></h1>
+      <p class="hero-copy">
+        Build decks. Search cards. Learn the rules. Track Chi. Carry the torch from browser to phone.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="pages/cards.html">Browse Cards</a>
+        <a class="button ghost" href="pages/play.html">Open Playtest Tools</a>
+        <button class="button install hidden" id="installAppButton" type="button">Install App</button>
+      </div>
+      <div class="status-card" role="status" aria-live="polite">
+        <span class="pulse"></span>
+        Phase 1 active: app shell, mobile navigation, PWA manifest, and offline service worker.
+      </div>
+    </section>
+
+    <section class="section-pad grid two-col" aria-label="App sections">
+      <article class="feature-card flame-card">
+        <span class="card-icon" aria-hidden="true">🃏</span>
+        <h2>Card Browser</h2>
+        <p>Search and filter the CTF database by set, type, category, group tag, ATK, DEF, level, and name.</p>
+        <a href="pages/cards.html">Enter cards →</a>
+      </article>
+
+      <article class="feature-card">
+        <span class="card-icon" aria-hidden="true">🧱</span>
+        <h2>Deck Builder</h2>
+        <p>Create clean 40–60 card decks, track Fusion Deck limits, and save builds locally on your device.</p>
+        <a href="pages/deckbuilder.html">Build deck →</a>
+      </article>
+
+      <article class="feature-card">
+        <span class="card-icon" aria-hidden="true">📖</span>
+        <h2>Rules Hub</h2>
+        <p>Learn the field, card types, 3 win paths, 7 phases, Libra, Fusion, Great Cards, and chains.</p>
+        <a href="pages/rules.html">Read rules →</a>
+      </article>
+
+      <article class="feature-card">
+        <span class="card-icon" aria-hidden="true">⚔️</span>
+        <h2>Playtest Mode</h2>
+        <p>Use a hot-seat toolset with 10,000 Chi, Kill counters, Extraction counters, phases, dice, and coin flip.</p>
+        <a href="pages/play.html">Start match tools →</a>
+      </article>
+    </section>
+
+    <section class="section-pad cave-panel">
+      <h2>Caveman Build Path</h2>
+      <ol class="torch-list">
+        <li>Make cave: GitHub repo and Pages.</li>
+        <li>Light torch: PWA app shell.</li>
+        <li>Put cards in cave: JSON database.</li>
+        <li>Teach tribe: rules hub and playtest tools.</li>
+        <li>Build kingdom: deck builder, images, export, and app wrap.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Carry The Flame · Perfect Timing Gaming · Buffalo, NY</p>
+    <p><small>Play hard. Respect the game. Protect Trust &amp; Growth.</small></p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="https://operatorstack.dev/os.js" data-project="pk_k4xr4vnpsizd"></script>
+</body>
+</html>
