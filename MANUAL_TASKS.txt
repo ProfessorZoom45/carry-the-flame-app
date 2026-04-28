@@ -1,0 +1,64 @@
+CARRY THE FLAME APP — MANUAL TASKS YOU MAY NEED TO DO
+=======================================================
+
+This file lists only the things that may require your hands inside GitHub or on your device.
+Anything that can be safely built in code will be handled in the repo files.
+
+PHASE 1 MANUAL TASKS
+--------------------
+1. Confirm GitHub Pages is enabled:
+   Repo → Settings → Pages → Deploy from branch → main → /root → Save.
+
+2. Open the live app after GitHub Pages finishes publishing:
+   https://ProfessorZoom45.github.io/carry-the-flame-app/
+
+3. Test mobile view on iPhone/iPad/Android:
+   - Open homepage.
+   - Open hamburger menu.
+   - Tap each main navigation link.
+
+4. Add real app icons later:
+   - assets/icons/icon-192.png
+   - assets/icons/icon-512.png
+   Until these exist, installability may show warnings in browser audits.
+
+5. Update README manually only if GitHub blocks automated README edits.
+
+PHASE 2 MANUAL TASKS
+--------------------
+1. Upload your real search index JSON file into this exact path:
+   data/ctf_cards_search_index.json
+
+2. The file should be the uploaded file named:
+   ctf_cards_search_index.json
+
+3. After upload, commit with this message:
+   Add CTF card search index data
+
+4. Test the Card Browser:
+   https://ProfessorZoom45.github.io/carry-the-flame-app/pages/cards.html
+
+5. In the Card Browser, test:
+   - Search by card name.
+   - Category filter.
+   - Type filter.
+   - Set filter.
+   - Sort dropdown.
+   - Reset button.
+
+6. If the page says it is using sample cards, the real JSON file is missing or in the wrong path.
+
+FUTURE MANUAL TASKS
+-------------------
+1. Upload card images later if you want visual card art.
+2. Add /IMAGES/ folders only after the browser is stable.
+3. Test on Safari iOS because PWA behavior is different from Chrome/Android.
+4. After major updates, clear browser cache if old files keep showing.
+
+CAVEMAN CHECK
+-------------
+If card page says sample mode:
+- Data not in cave yet.
+- Put ctf_cards_search_index.json in data folder.
+- Refresh cave.
+- Cards wake up.
