@@ -1,0 +1,145 @@
+CARRY THE FLAME PWA — ZIP ANALYSIS + NEW STRUCTURE PLAN
+========================================================
+
+Source bundle analyzed:
+CARRY THE FLAME A5 PATCH57 FULL BUNDLE.zip
+
+High-level bundle findings
+--------------------------
+The uploaded bundle contains:
+- A flat IMAGES folder.
+- Patch/update reports.
+- Master card name data.
+- Beginner guide document.
+- Audit and changelog files.
+
+Image findings
+--------------
+The ZIP contains one main flat image source folder:
+IMAGES/
+
+Detected image/source file count:
+- 3,515 files inside IMAGES/
+- 3,336 GIF files
+- 177 PNG files
+- 1 JPG file
+- 1 TXT file
+
+Important design decision
+-------------------------
+The PWA should NOT keep card art as one giant flat image folder forever.
+The card database already points toward a cleaner structure like:
+images/ANM/reese_the_great_s_gundam.gif
+images/DBZ/goku.gif
+images/BL1/yoichi_isagi.gif
+
+So the app should use:
+images/<SET>/<card_image_file>
+
+Why this matters
+----------------
+1. Faster lookup.
+2. Cleaner GitHub repo.
+3. Easier debugging.
+4. Easier missing-image audits.
+5. Cleaner future CDN or app wrapping.
+6. Better long-term PWA caching.
+
+Recommended repo structure
+--------------------------
+carry-the-flame-app/
+├── index.html
+├── manifest.json
+├── service-worker.js
+├── README.md
+├── BUILD_REPO_PLAIN_LANGUAGE.txt
+├── MANUAL_TASKS.txt
+├── PWA_STRUCTURE_ANALYSIS.txt
+├── assets/
+│   ├── css/
+│   │   └── app.css
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── cards.js
+│   │   ├── deckbuilder.js
+│   │   ├── playtest.js
+│   │   ├── rules.js
+│   │   └── storage.js
+│   └── icons/
+│       ├── icon-192.png
+│       └── icon-512.png
+├── data/
+│   ├── ctf_cards_search_index.json
+│   ├── ctf_cards_database.json
+│   ├── ctf_cards_by_set.json
+│   └── README.md
+├── docs/
+│   ├── CTF Beginners Guide v7.docx
+│   └── mechanics-requirements.md
+├── images/
+│   ├── README.md
+│   ├── ANM/
+│   ├── AOT/
+│   ├── BL1/
+│   ├── DBZ/
+│   └── etc...
+└── pages/
+    ├── cards.html
+    ├── deckbuilder.html
+    ├── rules.html
+    └── play.html
+
+Mechanics source of truth
+-------------------------
+Use CTF Beginners Guide v7 as the source for gameplay requirements.
+Key locked requirements for the PWA:
+- CTF supports 2 to 4 players.
+- Main win paths are Chi KO, 7 Kills, and 7 Extractions.
+- Main Deck size is 40 to 60 cards.
+- Fusion Deck size is 0 to 15 cards.
+- Starting hand is 5 cards.
+- Turn order uses 7 locked phases.
+- Starting Chi should be treated consistently as 10,000 for current CTF app work per user rule, even if older guide text says 9,999.
+- Great Cards cannot enter the Box.
+- Libra Zone cards are treated as Trick cards and cannot be used as End Phase sacrifices.
+- Palm Tricks cannot be used as counter-response cards.
+- Concealed Tricks are the reactive opponent-turn cards.
+
+Phase 2 correction
+------------------
+The first Phase 2 implementation used a clean scratch card browser.
+The new direction is repo-aware:
+- Keep the clean PWA shell.
+- Rebuild pages around the uploaded bundle structure.
+- Use the Beginner Guide for mechanics.
+- Use JSON card data as source of truth.
+- Use organized images/<SET>/ folders for card art.
+
+Image folder build status
+-------------------------
+A local organized image package was started from the flat IMAGES folder.
+Because GitHub text-file API cannot safely upload thousands of binary GIF/PNG files directly, the image folder must be uploaded manually or through GitHub Desktop/local git.
+
+Manual upload target:
+images/
+
+Expected final path example:
+images/ANM/reese_the_great_s_gundam.gif
+
+Next development steps
+----------------------
+1. Add images/README.md to the repo.
+2. Add data/README.md to the repo.
+3. Upload real data JSON files into data/.
+4. Upload organized image folder into images/.
+5. Update Card Browser to display card art when image_path exists.
+6. Build rules page from Beginner Guide mechanics.
+7. Build Playtest page around locked 7 phases and 10,000 Chi.
+8. Build Deck Builder around 40-60 Main Deck, 0-15 Fusion Deck, Great Card limits.
+
+Caveman version
+---------------
+Old bundle has big pile of pictures.
+New app needs labeled shelves.
+Put each picture on correct set shelf.
+Then cards can find their faces.
