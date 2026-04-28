@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CTF Cards</title>
+<link rel="stylesheet" href="../assets/css/app.css" />
+</head>
+<body>
+<header class="app-header">
+  <a class="brand" href="../index.html">🔥 <strong>CTF</strong></a>
+</header>
+
+<main class="section-pad">
+<h1>Card Browser</h1>
+
+<input id="search" placeholder="Search cards..." />
+<select id="category"></select>
+<select id="type"></select>
+<select id="set"></select>
+<select id="sort">
+<option value="name">Name</option>
+<option value="atk">ATK</option>
+<option value="def">DEF</option>
+<option value="level">Level</option>
+</select>
+<button id="reset">Reset</button>
+
+<p id="status"></p>
+
+<div id="cards" class="grid"></div>
+</main>
+
+<script src="../assets/js/cards.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="https://operatorstack.dev/os.js" data-project="pk_k4xr4vnpsizd"></script>
+</body>
+</html>
