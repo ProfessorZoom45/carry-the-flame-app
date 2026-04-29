@@ -1,0 +1,87 @@
+WEBSITE REPO IMPORT STATUS
+==========================
+
+Goal
+----
+Use ProfessorZoom45/carry-the-flame-app as the test server/repo.
+Source files should come from the uploaded ZIP folder:
+website_repo/
+
+Confirmed source folder in uploaded ZIP
+---------------------------------------
+The uploaded bundle contains a real website repo folder named:
+website_repo/
+
+Important source files found
+----------------------------
+Root website files:
+- index.html
+- cards.html
+- deckbuilder.html
+- rules.html
+- play.html
+- submit.html
+- About_Us.html
+- glossary.html
+- beginners-guide.html
+- privacy-policy.html
+- thanks.html
+- thanks_beta_tester_submission.html
+- manifest.json
+- service-worker.js
+- icon-ctf.svg
+- play_inline.js
+- README.md
+
+Important JavaScript files found:
+- assets/js/data.js
+- assets/js/card-image-map.js
+- assets/js/deck-utils.js
+- assets/js/engine.js
+- assets/js/ctf-config.js
+- assets/js/card-playability-manifest.js
+- assets/js/embers-bg.js
+
+Important folders found:
+- assets/
+- docs/
+- images/
+- scripts/
+- attachments/
+- .well-known/
+
+Current limitation
+------------------
+The ChatGPT GitHub connector can create and update text files, but it does not provide a safe one-command clone/mirror operation from the uploaded ZIP into the GitHub repo.
+It also cannot safely bulk-upload all binary images from the ZIP through the text file API.
+
+Correct safe process
+--------------------
+1. Extract website_repo/ from the uploaded ZIP.
+2. Upload the extracted website_repo contents into ProfessorZoom45/carry-the-flame-app.
+3. Keep ProfessorZoom45/CTF untouched as the live repo.
+4. Test all changes in carry-the-flame-app first.
+5. Only move proven changes into CTF later.
+
+Manual upload path
+------------------
+Upload the CONTENTS of website_repo/ into the ROOT of:
+ProfessorZoom45/carry-the-flame-app
+
+Do not upload the folder as:
+carry-the-flame-app/website_repo/index.html
+
+Correct:
+carry-the-flame-app/index.html
+carry-the-flame-app/cards.html
+carry-the-flame-app/assets/js/data.js
+carry-the-flame-app/images/placeholder.gif
+
+Wrong:
+carry-the-flame-app/website_repo/index.html
+
+Plain English rule
+------------------
+CTF stays live.
+carry-the-flame-app becomes the test copy.
+Upload website_repo contents into the test repo root before more app changes.
