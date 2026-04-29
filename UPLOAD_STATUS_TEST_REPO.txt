@@ -1,0 +1,20 @@
+TEST REPO UPLOAD STARTED
+
+Target repo:
+ProfessorZoom45/carry-the-flame-app
+
+Source package:
+carry-the-flame-app_TEST_REPO_UPLOAD.zip
+
+This repo is the testing server only.
+Do not treat this as the live CTF repo.
+
+Upload plan:
+1. Root HTML files
+2. Root PWA files
+3. assets/js files
+4. images placeholder and image folders
+5. docs folder if needed
+
+Note:
+Large files and binary files may require manual GitHub upload if the connector blocks them.
