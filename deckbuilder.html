@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deck Builder — Carry The Flame</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d0d0d">
+  <style>
+    :root{--bg:#0d0d0d;--panel:#1a1a1a;--panel2:#242424;--flame:#ff6a00;--cream:#e8e0d0;--white:#f5f0e8;--ash:#888;--bad:#e74c3c;--good:#4caf50}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif;line-height:1.5} a{color:var(--flame);text-decoration:none}
+    header{padding:22px 16px;border-bottom:1px solid rgba(255,106,0,.2);background:#090909;position:sticky;top:0;z-index:10}.wrap{max-width:1200px;margin:0 auto}.top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{font-size:25px;font-weight:900;color:var(--flame);text-transform:uppercase}.nav{display:flex;gap:12px;flex-wrap:wrap}.nav a{font-size:13px;text-transform:uppercase;color:var(--cream)}
+    main{padding:24px 16px}.hero h1{margin:0;color:var(--flame);font-size:40px;text-transform:uppercase}.hero p{color:var(--cream)}.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}.panel{background:var(--panel);border:1px solid rgba(255,106,0,.16);border-radius:12px;padding:14px}.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:12px}input,select,textarea{width:100%;padding:11px;background:var(--panel2);color:var(--white);border:1px solid rgba(255,106,0,.2);border-radius:7px}.list{display:grid;gap:8px;max-height:62vh;overflow:auto}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px;background:#111;border:1px solid rgba(255,106,0,.12);border-radius:8px}.row strong{display:block}.meta{font-size:12px;color:var(--ash)}button{border:0;border-radius:7px;padding:9px 12px;font-weight:800;cursor:pointer;background:var(--flame);color:#fff}.ghost{background:transparent;border:1px solid rgba(255,106,0,.35);color:var(--flame)}.deckline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}.status.good{color:var(--good)}.status.bad{color:var(--bad)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}textarea{height:220px;font-family:monospace;font-size:12px}.small{font-size:12px;color:var(--ash)}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.filters{grid-template-columns:1fr}}
+  </style>
+  <script src="assets/js/ctf-config.js"></script>
+  <script src="assets/js/ctf_card_database.js"></script>
+  <script src="assets/js/deck-utils.js"></script>
+</head>
+<body>
+<header><div class="wrap top"><a class="brand" href="index.html">Carry The Flame</a><nav class="nav"><a href="index.html">Home</a><a href="cards.html">Cards</a><a href="deckbuilder.html">Deck Builder</a><a href="play.html">Play</a><a href="rules.html">Rules</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><h1>Deck Builder</h1><p>Build a CTF deck from the loaded card database. Uses v9 rules: Main 40–60, Fusion 0–15, Side 0–15, Great Cards max 5 and one copy each.</p></section>
+<div class="layout">
+<section class="panel"><div class="filters"><input id="q" placeholder="Search cards"><select id="set"><option value="">All Sets</option></select><select id="zone"><option value="main">Add to Main</option><option value="fusion">Add to Fusion</option><option value="side">Add to Side</option></select></div><div id="cardCount" class="small"></div><div id="cards" class="list"></div></section>
+<section class="panel"><h2>Current Deck</h2><div id="counts"></div><div id="validation"></div><div class="actions"><button id="exportBtn">Export</button><button class="ghost" id="clearBtn">Clear</button></div><textarea id="exportBox" readonly placeholder="Export appears here..."></textarea></section>
+</div>
+</main>
+<script>
+(function(){
+ const cards=window.CTF_CARDS||window.CTF_CARD_DATABASE||[];const utils=window.CTF_DECK_UTILS;const deck={main:[],fusion:[],side:[]};
+ const q=document.getElementById('q'),set=document.getElementById('set'),zone=document.getElementById('zone'),list=document.getElementById('cards'),counts=document.getElementById('counts'),validation=document.getElementById('validation'),exportBox=document.getElementById('exportBox'),cardCount=document.getElementById('cardCount');
+ function val(c,k){return c?.[k]??c?.[k.toUpperCase()]??''} function name(c){return val(c,'name')||'Unnamed'} function setCode(c){return String(val(c,'set')||'').toUpperCase()} function cat(c){return val(c,'category')||val(c,'group')||val(c,'type')||''}
+ [...new Set(cards.map(setCode).filter(Boolean))].sort().forEach(s=>set.add(new Option(s,s))); cardCount.textContent=`Database loaded: ${cards.length} cards`;
+ function add(c){deck[zone.value].push(c);renderDeck()} function remove(area,i){deck[area].splice(i,1);renderDeck()}
+ window.removeDeckCard=remove;
+ function renderCards(){let arr=[...cards];const term=q.value.toLowerCase().trim();if(term)arr=arr.filter(c=>(name(c)+' '+cat(c)+' '+(val(c,'desc')||'')).toLowerCase().includes(term));if(set.value)arr=arr.filter(c=>setCode(c)===set.value);arr=arr.slice(0,250);list.innerHTML=arr.map((c,i)=>`<div class="row"><div><strong>${name(c)}</strong><div class="meta">${setCode(c)} · ${cat(c)} · LV ${val(c,'level')||'-'} · PR ${val(c,'pressure')||val(c,'atk')||'-'} / CP ${val(c,'counterPressure')||val(c,'def')||'-'}</div></div><button data-i="${i}">Add</button></div>`).join('')||'<p class="small">No cards found.</p>';[...list.querySelectorAll('button')].forEach(b=>b.onclick=()=>add(arr[Number(b.dataset.i)]));}
+ function renderDeck(){const result=utils?utils.validateDeck(deck):{legal:false,errors:['deck-utils.js not loaded'],warnings:[],counts:{main:deck.main.length,fusion:deck.fusion.length,side:deck.side.length}};counts.innerHTML=`<p>Main: ${deck.main.length} · Fusion: ${deck.fusion.length} · Side: ${deck.side.length}</p>`+['main','fusion','side'].map(area=>`<h3>${area.toUpperCase()}</h3>`+deck[area].map((c,i)=>`<div class="deckline"><span>${name(c)}</span><button class="ghost" onclick="removeDeckCard('${area}',${i})">Remove</button></div>`).join('')).join('');validation.innerHTML=`<p class="status ${result.legal?'good':'bad'}">${result.legal?'Deck legal':'Deck needs fixes'}</p>`+[...result.errors,...result.warnings].map(e=>`<div class="small">• ${e}</div>`).join('');}
+ document.getElementById('exportBtn').onclick=()=>{exportBox.value=utils?utils.exportDeckText(deck):JSON.stringify(deck,null,2)};document.getElementById('clearBtn').onclick=()=>{deck.main=[];deck.fusion=[];deck.side=[];renderDeck()};[q,set].forEach(el=>el.addEventListener('input',renderCards));renderCards();renderDeck();
+})();
+</script>
+</body></html>
