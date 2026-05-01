@@ -1,108 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0b0b" />
-  <meta name="description" content="Carry The Flame mobile-first PWA card game companion by Perfect Timing Gaming." />
-  <title>Carry The Flame App</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="assets/css/app.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Carry The Flame by Perfect Timing Gaming — cards, deckbuilding, rules, and hot-seat playtesting.">
+  <title>Carry The Flame — Perfect Timing Gaming</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root{--bg:#070707;--panel:#151515;--panel2:#222;--flame:#ff6a00;--ember:#ff2d00;--gold:#ffd166;--cream:#eee1cc;--white:#fff8ef;--ash:#9a948c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top,#251006 0,#070707 45%,#030303 100%);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.5;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:0 auto;padding:0 18px}.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:#000;color:#fff;padding:10px;border:1px solid var(--flame)}
+    header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,106,0,.25)}.top{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;gap:12px;align-items:center;font-weight:900;text-transform:uppercase;letter-spacing:.7px}.brand .torch{font-size:30px;filter:drop-shadow(0 0 14px var(--flame))}.brand small{display:block;color:var(--ash);font-size:11px;letter-spacing:1.4px}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{font-size:12px;text-transform:uppercase;color:var(--cream);padding:9px 10px;border:1px solid rgba(255,106,0,.18);border-radius:999px;background:rgba(255,255,255,.03)}.nav a:hover{border-color:var(--flame);color:#fff}.menu{display:none;background:transparent;border:1px solid rgba(255,106,0,.35);border-radius:10px;color:var(--flame);padding:10px 12px;font-weight:900}
+    .hero{position:relative;min-height:70vh;display:grid;align-items:center;padding:72px 0 48px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 90%,rgba(255,106,0,.28),transparent 34%),radial-gradient(circle at 20% 25%,rgba(255,45,0,.18),transparent 32%);pointer-events:none}.hero-inner{position:relative;z-index:2;text-align:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;margin:0 0 16px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,106,0,.35);color:var(--gold);background:rgba(0,0,0,.35);font-size:12px;text-transform:uppercase;letter-spacing:1.5px}.hero h1{font-size:clamp(48px,9vw,112px);line-height:.9;margin:0;text-transform:uppercase;letter-spacing:2px;color:var(--flame);text-shadow:0 0 16px rgba(255,106,0,.75),0 0 42px rgba(255,45,0,.35)}.hero .sub{font-size:clamp(22px,4vw,48px);font-weight:900;text-transform:uppercase;margin:14px 0;background:linear-gradient(180deg,#ff2d00 0 50%,#ff9a1f 50% 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 18px rgba(255,45,0,.35)}.hero p{max-width:820px;margin:18px auto;color:var(--cream);font-size:18px}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:12px;font-weight:900;text-transform:uppercase;border:1px solid rgba(255,106,0,.4)}.btn.primary{background:linear-gradient(135deg,var(--ember),var(--flame));color:#fff;box-shadow:0 0 22px rgba(255,106,0,.28)}.btn.ghost{background:rgba(0,0,0,.28);color:var(--cream)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px auto 0;max-width:900px}.stat{background:rgba(10,10,10,.72);border:1px solid rgba(255,106,0,.22);border-radius:16px;padding:18px}.stat strong{display:block;color:var(--gold);font-size:30px}.stat span{color:var(--ash);font-size:12px;text-transform:uppercase;letter-spacing:1px}.section{padding:46px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,rgba(255,106,0,.08),rgba(255,255,255,.03));border:1px solid rgba(255,106,0,.2);border-radius:18px;padding:22px;min-height:190px}.card h2{color:var(--gold);margin:0 0 10px}.card p{color:var(--cream)}.card a{color:var(--flame);font-weight:900}.wide{grid-column:span 3}.callout{background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.28);border-radius:20px;padding:24px;text-align:center}.callout h2{margin:0;color:var(--flame);text-transform:uppercase}.callout p{color:var(--cream)}footer{border-top:1px solid rgba(255,106,0,.2);padding:28px 0;color:var(--ash);text-align:center}.embers{position:fixed;inset:auto 0 0 0;height:35vh;pointer-events:none;z-index:1;background:radial-gradient(circle at 20% 80%,rgba(255,106,0,.18),transparent 8%),radial-gradient(circle at 55% 85%,rgba(255,45,0,.16),transparent 10%),radial-gradient(circle at 82% 78%,rgba(255,209,102,.12),transparent 8%);opacity:.9}
+    @media(max-width:760px){.menu{display:block}.nav{display:none;width:100%;padding-bottom:14px}.nav.open{display:flex}.top{flex-wrap:wrap}.stats,.grid{grid-template-columns:1fr}.wide{grid-column:auto}.hero{padding-top:44px}.hero p{font-size:16px}}
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="app-header" aria-label="App header">
-    <a class="brand" href="index.html" aria-label="Carry The Flame home">
-      <span class="brand-torch" aria-hidden="true">🔥</span>
-      <span>
-        <strong>Carry The Flame</strong>
-        <small>Perfect Timing Gaming</small>
-      </span>
-    </a>
-
-    <button class="menu-button" type="button" aria-label="Open navigation" aria-controls="siteNav" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="pages/cards.html">Cards</a>
-      <a href="pages/deckbuilder.html">Deck Builder</a>
-      <a href="pages/rules.html">Rules</a>
-      <a href="pages/play.html">Playtest</a>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero section-pad">
-      <div class="ember-field" aria-hidden="true"></div>
-      <p class="eyebrow">Mobile-first PWA companion</p>
-      <h1><span class="torch-side" aria-hidden="true">🔥</span> Carry The Flame <span class="torch-side" aria-hidden="true">🔥</span></h1>
-      <p class="hero-copy">
-        Build decks. Search cards. Learn the rules. Track Chi. Carry the torch from browser to phone.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="pages/cards.html">Browse Cards</a>
-        <a class="button ghost" href="pages/play.html">Open Playtest Tools</a>
-        <button class="button install hidden" id="installAppButton" type="button">Install App</button>
-      </div>
-      <div class="status-card" role="status" aria-live="polite">
-        <span class="pulse"></span>
-        Phase 1 active: app shell, mobile navigation, PWA manifest, and offline service worker.
-      </div>
-    </section>
-
-    <section class="section-pad grid two-col" aria-label="App sections">
-      <article class="feature-card flame-card">
-        <span class="card-icon" aria-hidden="true">🃏</span>
-        <h2>Card Browser</h2>
-        <p>Search and filter the CTF database by set, type, category, group tag, ATK, DEF, level, and name.</p>
-        <a href="pages/cards.html">Enter cards →</a>
-      </article>
-
-      <article class="feature-card">
-        <span class="card-icon" aria-hidden="true">🧱</span>
-        <h2>Deck Builder</h2>
-        <p>Create clean 40–60 card decks, track Fusion Deck limits, and save builds locally on your device.</p>
-        <a href="pages/deckbuilder.html">Build deck →</a>
-      </article>
-
-      <article class="feature-card">
-        <span class="card-icon" aria-hidden="true">📖</span>
-        <h2>Rules Hub</h2>
-        <p>Learn the field, card types, 3 win paths, 7 phases, Libra, Fusion, Great Cards, and chains.</p>
-        <a href="pages/rules.html">Read rules →</a>
-      </article>
-
-      <article class="feature-card">
-        <span class="card-icon" aria-hidden="true">⚔️</span>
-        <h2>Playtest Mode</h2>
-        <p>Use a hot-seat toolset with 10,000 Chi, Kill counters, Extraction counters, phases, dice, and coin flip.</p>
-        <a href="pages/play.html">Start match tools →</a>
-      </article>
-    </section>
-
-    <section class="section-pad cave-panel">
-      <h2>Caveman Build Path</h2>
-      <ol class="torch-list">
-        <li>Make cave: GitHub repo and Pages.</li>
-        <li>Light torch: PWA app shell.</li>
-        <li>Put cards in cave: JSON database.</li>
-        <li>Teach tribe: rules hub and playtest tools.</li>
-        <li>Build kingdom: deck builder, images, export, and app wrap.</li>
-      </ol>
-    </section>
-  </main>
-
-  <footer class="app-footer">
-    <p>Carry The Flame · Perfect Timing Gaming · Buffalo, NY</p>
-    <p><small>Play hard. Respect the game. Protect Trust &amp; Growth.</small></p>
-  </footer>
-
-  <script src="assets/js/app.js"></script>
-  <script src="https://operatorstack.dev/os.js" data-project="pk_k4xr4vnpsizd"></script>
-</body>
-</html>
+<a class="skip" href="#main">Skip to content</a><div class="embers" aria-hidden="true"></div>
+<header><div class="wrap top"><a class="brand" href="index.html"><span class="torch">🔥</span><span>Carry The Flame<small>Perfect Timing Gaming</small></span></a><button class="menu" id="menuBtn" type="button">☰ Menu</button><nav class="nav" id="siteNav"><a href="index.html">Home</a><a href="cards.html">Cards</a><a href="deckbuilder.html">Deck Builder</a><a href="play.html">Play</a><a href="rules.html">Rules</a><a href="submit.html">Submit</a></nav></div></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-inner"><p class="eyebrow">🔥 Browser beta · test repo · torch carrying style</p><h1>🔥 Carry The Flame 🔥</h1><div class="sub">Online Trading Card Game</div><p>Build decks, browse the 1,613-card Patch 57 database, learn the rules, and test real hot-seat duels with 10,000 Chi, Kills, Extractions, Tricks, chains, and timing windows.</p><div class="actions"><a class="btn primary" href="play.html">Start Playtest</a><a class="btn ghost" href="deckbuilder.html">Build Deck</a><a class="btn ghost" href="cards.html">Browse Cards</a></div><div class="stats"><div class="stat"><strong>1,613</strong><span>Clean cards</span></div><div class="stat"><strong>41</strong><span>Sets scanned</span></div><div class="stat"><strong>3</strong><span>Win paths</span></div><div class="stat"><strong>$0</strong><span>Cost to play</span></div></div></div></section>
+<section class="section"><div class="wrap grid"><article class="card"><h2>🃏 Card Browser</h2><p>Search the live CTF database by name, set, type, group, Pressure, Counter Pressure, Level, effect, and lore.</p><a href="cards.html">Enter cards →</a></article><article class="card"><h2>🧱 Deck Builder</h2><p>Build decks, validate limits, save locally, and send your saved deck straight into play mode.</p><a href="deckbuilder.html">Build deck →</a></article><article class="card"><h2>⚔️ Play Engine</h2><p>Hot-seat duel system with player turns, multiple battles, Trick Zones, Field Tricks, Concealed activation, and chain response flow.</p><a href="play.html">Play now →</a></article><article class="card"><h2>📖 Rules Hub</h2><p>Learn Chi, Pressure, Counter Pressure, Box, Void, RFG, Great Cards, Extraction, Rescue, and End Phase actions.</p><a href="rules.html">Read rules →</a></article><article class="card"><h2>🔥 Submit Cards</h2><p>Submit your own 5-card sets. Pass review and your creations can join the database for every player to use.</p><a href="submit.html">Submit cards →</a></article><article class="card"><h2>🛡️ Privacy</h2><p>Plain-English privacy and test app notes for the browser beta and future app bundle.</p><a href="privacy-policy.html">Read privacy →</a></article><div class="wide callout"><h2>The flame burns in the database forever.</h2><p>Current test build keeps the older website feel, but now points to the upgraded single database file, deckbuilder save flow, and competitive play system we built in the test repo.</p></div></div></section>
+</main><footer><div class="wrap"><p>© 2026 Perfect Timing Gaming · Carry The Flame · Buffalo, NY</p><p><small>Play hard. Respect the game. Protect Trust & Growth.</small></p></div></footer>
+<script>document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('siteNav').classList.toggle('open'));</script>
+<script src="https://operatorstack.dev/os.js" data-project="pk_k4xr4vnpsizd"></script>
+</body></html>
