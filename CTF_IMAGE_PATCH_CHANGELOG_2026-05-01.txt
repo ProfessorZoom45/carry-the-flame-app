@@ -1,0 +1,12 @@
+CTF Image Patch — 2026-05-01
+
+Safe Merge Mode Applied
+
+Files updated:
+- app.js
+- CTF_IMAGE_PATCH_CHANGELOG_2026-05-01.txt
+
+Notes:
+- Smart image fallback system added
+- No card database overwritten
+- No data loss risk
